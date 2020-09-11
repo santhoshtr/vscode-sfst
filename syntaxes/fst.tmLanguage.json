@@ -1,0 +1,134 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "SFST",
+	"patterns": [
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#variables"
+		},
+		{
+			"include": "#set"
+		},
+		{
+			"include": "#sequence"
+		},
+		{
+			"include": "#path"
+		},
+		{
+			"include": "#postag"
+		},
+		{
+			"include": "#constant"
+		}
+	],
+	"repository": {
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.line.percent-mark.sfst",
+					"match": "(%).*$\\n?"
+				}
+			]
+		},
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.sfst",
+					"match": "\\b(ALPHABET|include)\\b"
+				}
+			]
+		},
+		"constant": {
+			"name": "support.type.language.sfst",
+			"patterns": [
+				{
+					"name": "support.type.name.sfst",
+					"match": "#([0-9a-zA-Z-]+)#"
+				}
+			]
+		},
+		"variables": {
+			"name": "variable.language.sfst",
+			"begin": "\\$",
+			"end": "\\$",
+			"patterns": [
+				{
+					"name": "variable.language.sfst",
+					"match": "\\b([0-9a-zA-Z_-]+)\\b"
+				},
+				{
+
+					"match": ".",
+					"name": "invalid.illegal.sfst"
+				}
+			]
+		},
+		"set": {
+			"begin": "\\[",
+			"end": "\\]\\s*",
+			"captures": {
+				"0": {
+					"name": "punctuation.section.sfst"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#constant"
+				},
+				{
+					"include": "#postag"
+				},
+				{
+
+					"match": ".",
+					"name": "invalid.illegal.sfst"
+				}
+			]
+		},
+		"sequence": {
+			"begin": "\\{",
+			"end": "\\}\\s*",
+			"captures": {
+				"0": {
+					"name": "punctuation.section.sfst"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#postag"
+				},
+				{
+					"match": "[^\\s$]"
+				},
+				{
+
+					"match": ".",
+					"name": "invalid.illegal.sfst"
+				}
+			]
+		},
+		"postag": {
+			"patterns": [
+				{
+					"name": "entity.name.tag.sfst",
+					"match": "<([a-zA-Z0-9_-]+)>"
+				}
+			]
+		},
+		"path": {
+			"patterns": [
+				{
+					"name": "string.quoted.double.sfst",
+					"match": "\".*\""
+				}
+			]
+		}
+	},
+	"scopeName": "source.fst"
+}

@@ -1,0 +1,30 @@
+{
+    "name": "vscode-sfst",
+    "displayName": "vscode-sfst",
+    "description": "Support for Stuttgart Finite State Transducer (SFST) formalism",
+    "version": "0.0.1",
+    "publisher": "santhoshthottingal",
+    "engines": {
+        "vscode": "^1.48.0"
+    },
+    "repository": {
+		"type": "git",
+		"url": "https://github.com/santhoshtr/vscode-sfst"
+	},
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "fst",
+            "aliases": ["SFST", "fst"],
+            "extensions": [".fst"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "fst",
+            "scopeName": "source.fst",
+            "path": "./syntaxes/fst.tmLanguage.json"
+        }]
+    }
+}
